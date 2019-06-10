@@ -11,3 +11,90 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 30vmin;
+  pointer-events: none;
+}
+.nav ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  text-decoration: none;
+}
+
+.nav li:first-child {
+  padding-left: 0;
+}
+ul {
+  padding-left: 0;
+}
+
+li {
+  list-style-type: none;
+  padding: 10px;
+  text-decoration: none;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 10px;
+}
+.center{
+  text-align: center;
+}
+.signIn-container{
+    max-width: 350px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    height: 400px;
+    border: 1px solid #cfcccc;
+}
+.signIn-container > div {
+  border: 1px solid #525050;
+  background: #a3a2a2
+}
+.signIn-container > div {
+  border: 1px solid #cfcccc;
+  background: #f5f4f4;
+}
+/* .signIn-container > div > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center
+  
+} */
+.column-center{
+  display: flex;
+  flex-direction: column;
+  justify-content: center
+}
+.signIn-container > div > div > span:first-child {
+  font-weight: bold;
+  text-align:center;
+}
+.signIn-container > div > div > span:nth-child(2) {
+  color: #969696;
+  font-size: 16px;
+  text-align: center
+}
+.signIn-label{
+  color: #1ad4e8;
+  font-weight: bold;
+  font-size: x-large;
+}
+.signIn-select{
+  height: 40px;
+  margin: 5px;
+}
+.sigIn-btn{
+    background: #096965;
+    height: 50px;
+    color: white;
+    margin: 5px;
+}
+.sigIn-btn:hover{
+  background: #13a39e;
+}
