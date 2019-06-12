@@ -16,8 +16,9 @@ code {
   height: 30vmin;
   pointer-events: none;
 }
+
 .nav ul {
-  display: flex;
+  display: inline-flex;
   flex-direction: row;
   justify-content: flex-start;
   text-decoration: none;
@@ -25,6 +26,11 @@ code {
 
 .nav li:first-child {
   padding-left: 0;
+}
+.autheduserInfo{
+  float: right;
+  display: flex;
+  align-items: center;
 }
 ul {
   padding-left: 0;
@@ -35,7 +41,11 @@ li {
   padding: 10px;
   text-decoration: none;
 }
-
+.avatar {
+  height: 40px;
+  border-radius: 20px;
+  margin: 10px;
+}
 .container {
   max-width: 1000px;
   margin: 0 auto;
