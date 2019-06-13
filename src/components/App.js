@@ -5,7 +5,7 @@ import {handelInitialDate} from '../actions/shared'
 import LoadingBar from 'react-redux-loading'
 import Nav from './Nav'
 import Dashboard from './Dashboard'
-import QuestionPage from './QuestionPage'
+import Question from './Question'
 import SignInPage from './SignInPage'
 import { signIn } from '../actions/authedUser';
 
@@ -24,15 +24,16 @@ class App extends React.Component{
       <Fragment>
       <LoadingBar/>
         <div className='container'>
-       
-          <Nav/>
+       <div className='nav-container'>
+         <Nav/>
+       </div>
           {
             this.props.loggedIn === false
             ? <SignInPage/>
             :<div>
               <Route path='/' exact component={Dashboard}/>
               {/* <Route path='/question/:id' component={QuestionPage}/> */}
-              <Route path='/question' component={QuestionPage}/>
+              <Route path='/question' component={Question}/>
             </div>
           } 
         

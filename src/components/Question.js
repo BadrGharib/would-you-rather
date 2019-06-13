@@ -1,15 +1,16 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
-class QuestionPage extends React.Component{
+class Question extends React.Component{
     render()
     {
         return (
             <div>
+                <div></div>
                 QuestionPage
             </div>
         )
     }
 }
 
-export default connect()(QuestionPage)
+export default connect()(Question)

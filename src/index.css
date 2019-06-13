@@ -22,6 +22,7 @@ code {
   flex-direction: row;
   justify-content: flex-start;
   text-decoration: none;
+  margin-bottom: -2px;
 }
 
 .nav li:first-child {
@@ -31,6 +32,10 @@ code {
   float: right;
   display: flex;
   align-items: center;
+}
+.nav-container {
+  border-bottom: #09bbb5 2px solid;
+  margin-bottom: 10px;
 }
 ul {
   padding-left: 0;
@@ -105,6 +110,35 @@ li {
     color: white;
     margin: 5px;
 }
-.sigIn-btn:hover{
+.sigIn-btn:hover {
   background: #13a39e;
+}
+
+/*Dashboard style*/
+.dashboard-container {
+    max-width: 350px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    height: 400px;
+    border: 1px solid #cfcccc;
+}
+.dashboard-header-btns {
+  display: flex;
+  align-items: stretch;
+}
+.dashboard-tab {
+  flex-grow: 1;
+  /* color:  #09bbb5; */
+  color: black;
+  background: white;
+  border: 1px solid #cfcccc;
+  
+}
+.dashboard-tab-selected {
+  flex-grow: 1;
+  color:  #09bbb5; 
+  background: white;
+  border: 1px solid #cfcccc;
+  
 }
