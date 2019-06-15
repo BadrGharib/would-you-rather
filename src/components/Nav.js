@@ -1,5 +1,5 @@
 import React from 'react'
-import {NavLink} from 'react-router-dom'
+import {NavLink,Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {signOut} from '../actions/authedUser'
 
@@ -15,21 +15,21 @@ class Nav extends React.Component{
            <nav className='nav'>
             <ul>
                 <li>
-                    <NavLink to='/' exact activeClassName='active'>Home</NavLink>
-                </li>
+                    <NavLink to='/' exact activeClassName='active' style={{'text-decoration': 'none'}}>Home</NavLink>
+                </li>   
                 <li>
-                    <NavLink to='/question' activeClassName='active'>New Question</NavLink>
+                    <NavLink to='/question' activeClassName='active' style={{'text-decoration': 'none'}}>New Question</NavLink>
                 </li>
             </ul>
            
             
             {(user!==null)&&
-                <div className='autheduserInfo'>
+                <div className='authed-user-Info'>
                    <span>{`Hello, ${user.name}`}</span>
                     <img src={user.avatarURL}
                     alt={`Avatar of ${user.name}`}
                     className='avatar'/>
-                    <NavLink to='/' activeClassName='active' onClick={this.handelSignOut}>Sign Out</NavLink>
+                    <Link to='/'  style={{'text-decoration': 'none',}} onClick={this.handelSignOut}>Sign Out</Link>
                 </div>
             }
             

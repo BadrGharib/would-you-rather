@@ -5,8 +5,9 @@ import {handelInitialDate} from '../actions/shared'
 import LoadingBar from 'react-redux-loading'
 import Nav from './Nav'
 import Dashboard from './Dashboard'
-import Question from './Question'
+import Question from './QuestionDashboard'
 import SignInPage from './SignInPage'
+import QuestionPage from './QuestionPage'
 import { signIn } from '../actions/authedUser';
 
 class App extends React.Component{
@@ -32,7 +33,7 @@ class App extends React.Component{
             ? <SignInPage/>
             :<div>
               <Route path='/' exact component={Dashboard}/>
-              {/* <Route path='/question/:id' component={QuestionPage}/> */}
+              <Route path='/question/:id' component={QuestionPage}/>
               <Route path='/question' component={Question}/>
             </div>
           } 
