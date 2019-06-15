@@ -34,7 +34,7 @@ class App extends React.Component{
             :<div>
               <Route path='/' exact component={Dashboard}/>
               <Route path='/question/:id' component={QuestionPage}/>
-              <Route path='/question' component={Question}/>
+              {/* <Route path='/question'  component={Question}/> */}
             </div>
           } 
         

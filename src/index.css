@@ -117,11 +117,11 @@ li {
   height: 40px;
   margin: 5px;
 }
-.sigIn-btn{
+button{
     background: #096965;
-    height: 50px;
+    height: 40px;
     color: white;
-    margin: 5px;
+    /* margin: 5px; */
 }
 .sigIn-btn:hover {
   background: #13a39e;
@@ -161,6 +161,7 @@ li {
   margin: 10px;
   border: 1px solid #cfcccc;
 }
+
 .quetion{
   display: flex;
   flex-direction: row;
@@ -197,6 +198,15 @@ li {
 }
 .unAnswered-question-title{
   font-weight: bold;
-  text-align:center;
   color: black;
+  margin: 5px;
+}
+.unAnswered-question-options{
+  display: flex;
+  flex-direction: column;
+}
+.details-question-container{
+  margin: 0 auto;
+  width: 350px;
+  border: 1px solid #cfcccc;
 }

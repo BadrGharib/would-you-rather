@@ -2,8 +2,26 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {formatQuestion} from '../utils/helpers'
 import {Link} from 'react-router-dom'
+import {handelVoteQuestion} from '../actions/questions'
 
 class QuestionUnAnswered extends React.Component{
+    state={
+        selectedOtion:''
+    }
+    handelSelectedOption=(e)=>{
+        debugger;
+       const selectedOtion=e.target.value
+        this.setState(()=>({
+            selectedOtion
+        }))
+    }
+    handelSubmitOption=(e)=>{
+        debugger;
+        e.preventDefault();
+        const {selectedOtion}=this.state
+        const {dispatch,id}=this.props
+        dispatch(handelVoteQuestion(id,selectedOtion))
+    }
     render()
     {
         const {question}=this.props
@@ -16,8 +34,8 @@ class QuestionUnAnswered extends React.Component{
             name,id,avatar,optionSelected,optionOne,optionTwo,optionOneVotes,optionTwoVotes,
         } = question
         return (
-             <Link to={`/question/${id}`} style={{'text-decoration':'none'}}>
-            <div className='question-container'>
+            //  <Link to={`/question/${id}`} style={{'text-decoration':'none'}}>
+            <div className='details-question-container'>
                 <div className='question-header'>{name}</div>
                 <div className='quetion'>   
                  <div className='question-searator'>
@@ -28,7 +46,18 @@ class QuestionUnAnswered extends React.Component{
 
                     <div className='question-info'>
                         <div className='unAnswered-question-title'>Would you rather...</div>
-                        <div className='dashboard-question-title-dimed'>
+                        <form onSubmit={this.handelSubmitOption} className='unAnswered-question-options'>
+                            {/* <div id="group1" > */}
+                               <div> 
+                                  <input type="radio" onChange={this.handelSelectedOption} value='optionOne' name="group1"/>{optionOne}
+                               </div>
+                               <div> 
+                                  <input type="radio" onChange={this.handelSelectedOption} value='optionTwo' name="group1"/>{optionTwo}
+                               </div>
+                            {/* </div> */}
+                            <button  type='submit'>Submit</button>
+                        </form>
+                        {/* <div id='option'>
                             {
                                 optionSelected === 'optionTwo'
                                 ?
@@ -37,7 +66,7 @@ class QuestionUnAnswered extends React.Component{
                                 optionOne
 
                             }
-                        </div>
+                        </div> */}
                     </div>
                    
 
@@ -45,7 +74,7 @@ class QuestionUnAnswered extends React.Component{
 
             </div>
                 
-             </Link>
+            //  </Link>
         )
       }
       
@@ -58,6 +87,7 @@ function mapStateToProps({authedUser,users,questions},{id}){
    // debugger;
     return {
         authedUser,
+        id,
         question: question?formatQuestion(question,users[question.author],users[authedUser]):null
     }
 

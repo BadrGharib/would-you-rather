@@ -1,11 +1,23 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import QuestionUnAnswered from './QuestionUnAnswered'
+import QuestionAnswered from './QuestionAnswered'
 
+const UNANSWERED_QUESTION='unanswered_question'
+const ANSWERED_QUESTION='answered_question'
 class QuestionPage extends React.Component{
     render(){
+        debugger;
+        const{id,questionType}=this.props
         return (
             <div>
-            Question Page!
+            {
+                questionType == UNANSWERED_QUESTION
+                ?
+                <QuestionUnAnswered id={id}/>
+                :
+                <QuestionAnswered id={id}/>
+            }
             </div>
 
         )
@@ -32,13 +44,17 @@ class QuestionPage extends React.Component{
     }
 }
 
-// function mapStateToProps({authedUser,tweets,users},props){
-//     const {id}=props.match.params
-//   return {
-//       id,
-//       replies:!tweets[id]
-//       ?[]
-//       :tweets[id].replies.sort((a,b)=>tweets[b].timestamp-tweets[a].timestamp)
-//   }
-// }
-export default connect()(QuestionPage)
+function mapStateToProps({authedUser,questions,users},props){
+    debugger;
+    const {id}=props.match.params
+    const question=questions[id]
+  return {
+      id,
+      questionType:question.optionOne.votes.length===0 && question.optionTwo.votes.length===0
+                   ?
+                    ANSWERED_QUESTION
+                   :
+                   UNANSWERED_QUESTION
+  }
+}
+export default connect(mapStateToProps)(QuestionPage)

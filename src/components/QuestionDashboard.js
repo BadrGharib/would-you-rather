@@ -6,6 +6,7 @@ import {Link,withRouter} from 'react-router-dom'
 class QuestionDashboard extends React.Component{
     render()
     {
+        debugger;
         const {question}=this.props
       
       if( question===null)
