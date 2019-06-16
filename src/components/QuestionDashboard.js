@@ -14,14 +14,14 @@ class QuestionDashboard extends React.Component{
       else
       {
         const {
-            name,id,avatar,optionSelected,optionOne,optionTwo,optionOneVotes,optionTwoVotes,
+            name,id,avatar,optionSelected,optionOneText,optionTwoText,optionOneVotesCount,optionTwoVotesCount,
         } = question
         return (
              <Link to={`/question/${id}`} style={{'text-decoration':'none'}}>
             <div className='question-container'>
                 <div className='question-header'>{name}</div>
                 <div className='quetion'>   
-                 <div className='question-searator'>
+                 <div className='separator'>
                     <img src={avatar}
                     alt={`Avatar of ${name}`}
                     className='question-avatar'/>
@@ -33,9 +33,9 @@ class QuestionDashboard extends React.Component{
                             {
                                 optionSelected === 'optionTwo'
                                 ?
-                                optionTwo
+                                optionTwoText
                                 :
-                                optionOne
+                                optionOneText
 
                             }
                         </div>

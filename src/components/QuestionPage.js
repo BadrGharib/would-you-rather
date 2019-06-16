@@ -2,45 +2,57 @@ import React from 'react'
 import {connect} from 'react-redux'
 import QuestionUnAnswered from './QuestionUnAnswered'
 import QuestionAnswered from './QuestionAnswered'
+import {formatQuestion} from '../utils/helpers'
 
 const UNANSWERED_QUESTION='unanswered_question'
 const ANSWERED_QUESTION='answered_question'
 class QuestionPage extends React.Component{
     render(){
         debugger;
-        const{id,questionType}=this.props
-        return (
-            <div>
-            {
-                questionType == UNANSWERED_QUESTION
-                ?
-                <QuestionUnAnswered id={id}/>
-                :
-                <QuestionAnswered id={id}/>
-            }
-            </div>
+        const{question}=this.props
+        if( question===null)
+        return (<p>this question dosn't exist</p>)
+       else
+       {
+            const {
+                    name,id,avatar,optionSelected,optionOneText,optionTwoText,optionOneVotesCount,optionTwoVotesCount,
+                  } = question
+            const questionType=optionOneVotesCount===0 && optionTwoVotesCount===0
+                    ?
+                    UNANSWERED_QUESTION
+                    :
+                    ANSWERED_QUESTION
 
-        )
+            return (
+
+                <div className='details-question-container'>
+                    <div className='question-header'>{name}</div>
+                    <div className='quetion'>   
+                   
+                        <div >
+                            <img src={avatar}
+                            alt={`Avatar of ${name}`}
+                            className='question-avatar'/>
+                        </div>
+                        <div className='separator'>
+                            {
+                                questionType == UNANSWERED_QUESTION
+                                ?
+                                <QuestionUnAnswered question={question}/>
+                                :
+                                <QuestionAnswered question={question}/>
+                            }
+                         </div>
+
+
+                    </div>
+
+                </div>
+            
+
+            )
+      }
       
-        // const {id,replies}=this.props
-        // console.log(this.props)
-        // return (
-        //     <div>
-        //        <Tweet id={id}/>
-        //        <NewTweet id={id}/>
-        //        {replies.length !==0 &&<h3 className='center'>Replies</h3>}
-        //        <ul>
-        //         {
-        //             replies.map((id)=>(
-        //                 <li key={id}>
-        //                 <Tweet id={id}/>
-        //                 </li>
-        //             ))
-        //         }
-        //        </ul>
-               
-        //     </div>
-        // )
     }
 }
 
@@ -49,12 +61,8 @@ function mapStateToProps({authedUser,questions,users},props){
     const {id}=props.match.params
     const question=questions[id]
   return {
-      id,
-      questionType:question.optionOne.votes.length===0 && question.optionTwo.votes.length===0
-                   ?
-                    ANSWERED_QUESTION
-                   :
-                   UNANSWERED_QUESTION
-  }
+      question: question?formatQuestion(question,users[question.author],users[authedUser]):null
+     
+  } 
 }
 export default connect(mapStateToProps)(QuestionPage)

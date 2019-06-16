@@ -50,7 +50,7 @@ class SignInPage extends React.Component{
                     }
                 </select>
 
-                <button  type='submit' >Sign In</button>
+                <button className='btn' type='submit' >Sign In</button>
               </form>
               
               

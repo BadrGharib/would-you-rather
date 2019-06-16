@@ -18,7 +18,10 @@ class Nav extends React.Component{
                     <NavLink to='/' exact activeClassName='active' style={{'text-decoration': 'none'}}>Home</NavLink>
                 </li>   
                 <li>
-                    <NavLink to='/question' activeClassName='active' style={{'text-decoration': 'none'}}>New Question</NavLink>
+                    <NavLink to='/new' activeClassName='active' style={{'text-decoration': 'none'}}>New Question</NavLink>
+                </li>
+                <li>
+                    <NavLink to='/leader' activeClassName='active' style={{'text-decoration': 'none'}}>Leader Board</NavLink>
                 </li>
             </ul>
            

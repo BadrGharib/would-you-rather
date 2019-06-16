@@ -48,6 +48,19 @@ let questions = {
       text: 'have horrible long term memory'
     }
   },
+  "8xf0y6ziyjabvozdd254nd": {
+    id: '8xf0y6ziyjabvozdd254nd',
+    author: 'sarahedo',
+    timestamp: 1467166872634,
+    optionOne: {
+      votes: [],
+      text: 'have horrible short term memory',
+    },
+    optionTwo: {
+      votes: [],
+      text: 'have horrible long term memory'
+    }
+  },
   "6ni6ok3ym7mf1p33lnez": {
     id: '6ni6ok3ym7mf1p33lnez',
     author: 'johndoe',
@@ -149,6 +162,7 @@ function formatQuestion ({ optionOneText, optionTwoText, author }) {
 
 export function _saveQuestion (question) {
   return new Promise((res, rej) => {
+    debugger;
     const authedUser = question.author;
     const formattedQuestion = formatQuestion(question);
 
@@ -174,6 +188,7 @@ export function _saveQuestion (question) {
 export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
   return new Promise((res, rej) => {
     setTimeout(() => {
+      debugger;
       users = {
         ...users,
         [authedUser]: {
@@ -196,7 +211,11 @@ export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
         }
       }
 
-      res({...questions},{...users})
+      // res([{...questions},{...users}])
+      debugger;
+      // res({questions:{...questions},users:{...users}})
+      res({questions,users})
+    //  res(questions,users)
     }, 500)
   })
 }

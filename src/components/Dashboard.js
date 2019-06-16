@@ -59,27 +59,24 @@ class Dashboard extends React.Component{
         )
     }
 }
-function mapStateToProps({questions}){
+function mapStateToProps({questions,authedUser}){
     debugger;
     //sort questions based on most recently created (top)
     const questionsIds=Object.keys(questions).sort((a,b)=>questions[b].timestamp-questions[a].timestamp)
     //extract unanswered questions Ids
-   // const unansweredQuestions= questionsIds.filter((q)=>(
-                             //  questions[q].optionOne.votes.length===0
-                             //  && questions[q].optionTwo.votes.length===0))
+   const unansweredQuestions= questionsIds.filter((q)=>(
+                              !questions[q].optionOne.votes.includes(authedUser)
+                              && !questions[q].optionTwo.votes.includes(authedUser)))
  //extract answered questions Ids
-    //const answeredQuestions= questionsIds.filter((q)=>(
-                        //    questions[q].optionOne.votes.length > 0
-                         //   || questions[q].optionTwo.votes.length > 0))
+    const answeredQuestions= questionsIds.filter((q)=>(
+                             questions[q].optionOne.votes.includes(authedUser)
+                           || questions[q].optionTwo.votes.includes(authedUser)))
+
  return {
      
-        unansweredQuestionsIds:questionsIds.filter((q)=>(
-                                                        questions[q].optionOne.votes.length===0
-                                                        && questions[q].optionTwo.votes.length===0))
+        unansweredQuestionsIds:unansweredQuestions
         ,
-        answeredQuestionsIds:questionsIds.filter((q)=>(
-                                                        questions[q].optionOne.votes.length > 0
-                                                        || questions[q].optionTwo.votes.length > 0))
+        answeredQuestionsIds:answeredQuestions
     }
 
     }

@@ -9,6 +9,8 @@ import Question from './QuestionDashboard'
 import SignInPage from './SignInPage'
 import QuestionPage from './QuestionPage'
 import { signIn } from '../actions/authedUser';
+import NewQuestion from './NewQuestion'
+import LeaderBoard from './LeaderBoard';
 
 class App extends React.Component{
     componentDidMount()
@@ -34,7 +36,8 @@ class App extends React.Component{
             :<div>
               <Route path='/' exact component={Dashboard}/>
               <Route path='/question/:id' component={QuestionPage}/>
-              {/* <Route path='/question'  component={Question}/> */}
+              <Route path='/new'  component={NewQuestion}/>
+              <Route path='/leader'  component={LeaderBoard}/>
             </div>
           } 
         
