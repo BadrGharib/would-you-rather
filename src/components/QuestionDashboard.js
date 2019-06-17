@@ -14,10 +14,10 @@ class QuestionDashboard extends React.Component{
       else
       {
         const {
-            name,id,avatar,optionSelected,optionOneText,optionTwoText,optionOneVotesCount,optionTwoVotesCount,
+            name,id,avatar,optionSelected,optionOneText,optionTwoText
         } = question
         return (
-             <Link to={`/question/${id}`} style={{'text-decoration':'none'}}>
+             <Link to={`/question/${id}`} style={{'textDecoration':'none'}}>
             <div className='question-container'>
                 <div className='question-header'>{name}</div>
                 <div className='quetion'>   

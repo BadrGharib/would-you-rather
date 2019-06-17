@@ -27,7 +27,7 @@ class Option extends React.Component{
                   <div className="progressBar">
                     <div  style={{
                         color:'#000',
-                        'background-color':'#09bbb5',
+                        'backgroundColor':'#09bbb5',
                         height:'24px',
                         width:votePercent}}>{votePercent}</div>
                   </div>
@@ -41,7 +41,7 @@ class Option extends React.Component{
     }
 }
 
-function mapStateToProps({},{ optionText,votes,totalVotes,isSelected}){
+function mapStateToProps(state,{ optionText,votes,totalVotes,isSelected}){
     // debugger;
    return {
       optionText,

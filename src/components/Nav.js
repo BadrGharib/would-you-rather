@@ -15,13 +15,13 @@ class Nav extends React.Component{
            <nav className='nav'>
             <ul>
                 <li>
-                    <NavLink to='/' exact activeClassName='active' style={{'text-decoration': 'none'}}>Home</NavLink>
+                    <NavLink to='/' exact activeClassName='active' style={{'textDecoration': 'none'}}>Home</NavLink>
                 </li>   
                 <li>
-                    <NavLink to='/new' activeClassName='active' style={{'text-decoration': 'none'}}>New Question</NavLink>
+                    <NavLink to='/new' activeClassName='active' style={{'textDecoration': 'none'}}>New Question</NavLink>
                 </li>
                 <li>
-                    <NavLink to='/leader' activeClassName='active' style={{'text-decoration': 'none'}}>Leader Board</NavLink>
+                    <NavLink to='/leader' activeClassName='active' style={{'textDecoration': 'none'}}>Leader Board</NavLink>
                 </li>
             </ul>
            
@@ -32,7 +32,7 @@ class Nav extends React.Component{
                     <img src={user.avatarURL}
                     alt={`Avatar of ${user.name}`}
                     className='avatar'/>
-                    <Link to='/'  style={{'text-decoration': 'none',}} onClick={this.handelSignOut}>Sign Out</Link>
+                    <Link to='/'  style={{'textDecoration': 'none',}} onClick={this.handelSignOut}>Sign Out</Link>
                 </div>
             }
             
@@ -43,7 +43,7 @@ class Nav extends React.Component{
     }
 }
 function mapStateToProps({authedUser,users}){
-   // debugger;
+    debugger;
  return {
      user:authedUser===null?null:users[authedUser]
  }

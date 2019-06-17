@@ -3,19 +3,21 @@ import {connect} from 'react-redux'
 import QuestionUnAnswered from './QuestionUnAnswered'
 import QuestionAnswered from './QuestionAnswered'
 import {formatQuestion} from '../utils/helpers'
+import {Redirect} from 'react-router-dom'
 
 const UNANSWERED_QUESTION='unanswered_question'
 const ANSWERED_QUESTION='answered_question'
+
 class QuestionPage extends React.Component{
     render(){
         debugger;
         const{question}=this.props
         if( question===null)
-        return (<p>this question dosn't exist</p>)
+          return <Redirect to='/notfound'/>
        else
        {
             const {
-                    name,id,avatar,optionSelected,optionOneText,optionTwoText,optionOneVotesCount,optionTwoVotesCount,
+                    name,avatar,optionOneVotesCount,optionTwoVotesCount,
                   } = question
             const questionType=optionOneVotesCount===0 && optionTwoVotesCount===0
                     ?
@@ -36,7 +38,7 @@ class QuestionPage extends React.Component{
                         </div>
                         <div className='separator'>
                             {
-                                questionType == UNANSWERED_QUESTION
+                                questionType === UNANSWERED_QUESTION
                                 ?
                                 <QuestionUnAnswered question={question}/>
                                 :

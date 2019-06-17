@@ -43,8 +43,8 @@ class SignInPage extends React.Component{
               <img src={logo} className="App-logo" alt="logo" />
               <span className='center signIn-label'>Sign in</span>
               <form onSubmit={this.handelSubmit} className='column-center'>
-                <select  value={this.state.value} onChange={this.handelChange} className='signIn-select'>
-                <option disabled selected value> -- select User -- </option>
+                <select defaultValue='0'  onChange={this.handelChange} className='signIn-select'>
+                <option disabled  value='0' > -- select User -- </option>
                     {
                     users.map((user)=>(<option key={user.id} value={user.id}>{user.name}</option>))
                     }

@@ -1,8 +1,12 @@
+import sarahImg from '../images/sarah.jpg'
+import tylerImg from '../images/tyler.jpg'
+import danImg from '../images/dan.jpg'
+import badrImg from '../images/badr.jpg'
 let users = {
   sarahedo: {
     id: 'sarahedo',
     name: 'Sarah Edo',
-    avatarURL: "https://tylermcginnis.com/would-you-rather/sarah.jpg",
+    avatarURL: sarahImg,
     answers: {
       "8xf0y6ziyjabvozdd253nd": 'optionOne',
       "6ni6ok3ym7mf1p33lnez": 'optionTwo',
@@ -14,7 +18,7 @@ let users = {
   tylermcginnis: {
     id: 'tylermcginnis',
     name: 'Tyler McGinnis',
-    avatarURL: "https://tylermcginnis.com/would-you-rather/tyler.jpg",
+    avatarURL: tylerImg,
     answers: {
       "vthrdm985a262al8qx3do": 'optionOne',
       "xj352vofupe1dqz9emx13r": 'optionTwo',
@@ -24,13 +28,20 @@ let users = {
   johndoe: {
     id: 'johndoe',
     name: 'John Doe',
-    avatarURL:  "https://tylermcginnis.com/would-you-rather/dan.jpg",
+    avatarURL:  danImg,
     answers: {
       "xj352vofupe1dqz9emx13r": 'optionOne',
       "vthrdm985a262al8qx3do": 'optionTwo',
       "6ni6ok3ym7mf1p33lnez": 'optionTwo'
     },
     questions: ['6ni6ok3ym7mf1p33lnez', 'xj352vofupe1dqz9emx13r'],
+  },
+  badr: {
+    id: 'badr',
+    name: 'badr gharib',
+    avatarURL:  badrImg,
+    answers: {},
+    questions: [],
   }
 }
 
@@ -210,12 +221,8 @@ export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
           }
         }
       }
-
-      // res([{...questions},{...users}])
-      debugger;
-      // res({questions:{...questions},users:{...users}})
-      res({questions,users})
-    //  res(questions,users)
+    //  res({questions,users})
+      res()
     }, 500)
   })
 }

@@ -3,15 +3,18 @@ import {receiveQuestions} from './questions'
 import {receiveUsers}  from './users'
 import { signIn} from './authedUser'
 import {showLoading , hideLoading} from 'react-redux-loading'
+
 export const handelInitialDate=()=>{
-    return (dispatch)=>{
-        dispatch(showLoading())
-        return getInitialData()
-        .then(({users,questions})=>{
-          //  dispatch(signIn('johndoe'))
-            dispatch(receiveUsers(users))
-            dispatch(receiveQuestions(questions))
-            dispatch(hideLoading())
-        })
+    return (dispatch,getState)=>{
+            debugger;
+            dispatch(showLoading())
+            const {authedUser}=getState();
+            return getInitialData()
+                    .then(({users,questions})=>{
+                            authedUser!==null && dispatch(signIn(authedUser))
+                            dispatch(receiveUsers(users))
+                            dispatch(receiveQuestions(questions))
+                            dispatch(hideLoading())
+                         })
     }
 }

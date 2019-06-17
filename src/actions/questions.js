@@ -1,6 +1,6 @@
 import { saveQuestionAnswer, saveQuestion,} from '../utils/api'
 import{showLoading,hideLoading} from 'react-redux-loading'
-import { receiveUsers , userCreateQuestion} from './users';
+import { userVoteQuestion , userCreateQuestion} from './users';
 
 export const RECEIVE_QUESTIONS='RECEIVE_QUESTIONS'
 export const ADD_QUESTION='ADD_QUESTION'
@@ -20,14 +20,14 @@ export const addQuestion=(question)=>{
     }
 }
 
-// export const voteQuestion=(qId,user,answer)=>{
-//     return {
-//         type:VOTE_QUESTION,
-//         qId,
-//         user,
-//         answer
-//     }
-// }
+export const voteQuestion=(qid,authedUser,answer)=>{
+    return {
+        type:VOTE_QUESTION,
+        qid,
+        authedUser,
+        answer
+    }
+}
 
 export const handelVoteQuestion=(id,option)=>{
     debugger;
@@ -38,22 +38,18 @@ export const handelVoteQuestion=(id,option)=>{
             authedUser,
             qid:id,
             answer:option})
-            .then((result)=>{
+            .then(()=>{
                 debugger;
-                const{questions,users}=result
-                dispatch(receiveQuestions(questions))
-                dispatch(receiveUsers(users))
+                dispatch(voteQuestion(id,authedUser,option))
+                dispatch(userVoteQuestion(id,authedUser,option))
                 dispatch(hideLoading())
-            }
-            )
-            
+            })
     }
 }
 
 export const handelAddQuestion=(optionOneText, optionTwoText, author )=>{
     debugger;
     return (dispatch, getState)=>{
-        const {authedUser}=getState()
         dispatch(showLoading())
         return saveQuestion({
             optionOneText,

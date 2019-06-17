@@ -1,16 +1,15 @@
 import React ,{Fragment} from 'react'
 import {connect} from 'react-redux'
-import {BrowserRouter,Route} from 'react-router-dom'
+import {BrowserRouter,Route, Switch} from 'react-router-dom'
 import {handelInitialDate} from '../actions/shared'
 import LoadingBar from 'react-redux-loading'
 import Nav from './Nav'
 import Dashboard from './Dashboard'
-import Question from './QuestionDashboard'
 import SignInPage from './SignInPage'
 import QuestionPage from './QuestionPage'
-import { signIn } from '../actions/authedUser';
 import NewQuestion from './NewQuestion'
 import LeaderBoard from './LeaderBoard';
+import NotFound from './NotFound';
 
 class App extends React.Component{
     componentDidMount()
@@ -21,39 +20,39 @@ class App extends React.Component{
     }
     render(){
       return (
-
-        <BrowserRouter>
-     
-      <Fragment>
-      <LoadingBar/>
-        <div className='container'>
-       <div className='nav-container'>
-         <Nav/>
-       </div>
-          {
-            this.props.loggedIn === false
-            ? <SignInPage/>
-            :<div>
-              <Route path='/' exact component={Dashboard}/>
-              <Route path='/question/:id' component={QuestionPage}/>
-              <Route path='/new'  component={NewQuestion}/>
-              <Route path='/leader'  component={LeaderBoard}/>
-            </div>
-          } 
-        
-        </div>
-      </Fragment>
-      
-      </BrowserRouter>
+            <BrowserRouter>
+              <Fragment>
+                <LoadingBar/>
+                <div className='container'>
+                      <div className='nav-container'>
+                        <Nav/>
+                      </div>
+                      {
+                        this.props.loggedIn === false
+                        ? <SignInPage/>
+                        :<div>
+                          <Switch>
+                          <Route path='/' exact component={Dashboard}/>
+                          <Route path='/question/:id' component={QuestionPage}/>
+                          <Route path='/new'  component={NewQuestion}/>
+                          <Route path='/leader'  component={LeaderBoard}/>
+                          <Route path="" component={NotFound}/>
+                          </Switch>
+                        </div>
+                      } 
+                  </div>
+              </Fragment>
+           </BrowserRouter>
          
       )
 
     }
 }
 function mapStateToProps({authedUser}){
+  debugger;
    return { 
-       loggedIn:authedUser !==null,
-       loading:authedUser ===null
+       loggedIn:authedUser !==null,//check if user not logged in to show sign in page
+       loading:authedUser ===null  //check if loading finished to hide loading bar
     }
 
 }

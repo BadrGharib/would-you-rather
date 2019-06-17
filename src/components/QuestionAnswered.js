@@ -1,6 +1,5 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
 import {handelVoteQuestion} from '../actions/questions'
 import Option from './Option'
 
@@ -26,7 +25,7 @@ class QuestionAnswered extends React.Component{
       else
       {
         const {
-            name,id,avatar,optionSelected,optionOneText,optionTwoText,optionOneVotesCount,optionTwoVotesCount,
+            optionSelected,optionOneText,optionTwoText,optionOneVotesCount,optionTwoVotesCount,
           } = question
           debugger;
           const totalVotes=optionOneVotesCount+optionTwoVotesCount
