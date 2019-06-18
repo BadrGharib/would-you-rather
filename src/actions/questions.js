@@ -1,6 +1,6 @@
-import { saveQuestionAnswer, saveQuestion,} from '../utils/api'
+import {saveQuestionAnswer,saveQuestion} from '../utils/api'
 import{showLoading,hideLoading} from 'react-redux-loading'
-import { userVoteQuestion , userCreateQuestion} from './users';
+import {userVoteQuestion,userCreateQuestion} from './users';
 
 export const RECEIVE_QUESTIONS='RECEIVE_QUESTIONS'
 export const ADD_QUESTION='ADD_QUESTION'
@@ -60,9 +60,8 @@ export const handelAddQuestion=(optionOneText, optionTwoText, author )=>{
                 dispatch(addQuestion(question))
                 dispatch(userCreateQuestion(question.author,question.id))
                 dispatch(hideLoading())
-            }
-            )
-            
+             }
+           )  
     }
 }
 

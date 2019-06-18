@@ -22,17 +22,11 @@ class QuestionUnAnswered extends React.Component{
     }
     render()
     {
-        const {question}=this.props
-      
-      if( question===null)
-       return (<p>this question dosn't exist</p>)
-      else
-      {
-        const {
+      const {question}=this.props
+      const {
             optionOneText,optionTwoText
         } = question
         return (
-           
             <div className='question-info'>
                 <div className='question-title'>Would you rather...</div>
                 <form onSubmit={this.handelSubmitOption} className='question-options'>
@@ -46,17 +40,15 @@ class QuestionUnAnswered extends React.Component{
                 </form>
            
              </div>
-       
         )
-      }
-      
     }
-    
 }
+
 function mapStateToProps({authedUser},{question}){
     return {
         question
     }
 
 }
+
 export default connect(mapStateToProps)(QuestionUnAnswered)

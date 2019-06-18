@@ -8,6 +8,7 @@ class Nav extends React.Component{
         const {dispatch}=this.props
         dispatch(signOut())
     }
+
     render(){
         debugger;
         const{user}=this.props
@@ -25,27 +26,30 @@ class Nav extends React.Component{
                 </li>
             </ul>
            
-            
-            {(user!==null)&&
-                <div className='authed-user-Info'>
-                   <span>{`Hello, ${user.name}`}</span>
-                    <img src={user.avatarURL}
-                    alt={`Avatar of ${user.name}`}
-                    className='avatar'/>
-                    <Link to='/'  style={{'textDecoration': 'none',}} onClick={this.handelSignOut}>Sign Out</Link>
-                </div>
+            {
+                (user!==null)&&
+                    <div className='authed-user-Info'>
+                        <span>{`Hello, ${user.name}`}</span>
+
+                        <img src={user.avatarURL}
+                        alt={`Avatar of ${user.name}`}
+                        className='avatar'/>
+
+                        <Link to='/'  
+                            style={{'textDecoration': 'none',}} 
+                            onClick={this.handelSignOut}>Sign Out</Link>
+                    </div>
             }
-            
-             
-           
            </nav>
         )
     }
 }
+
 function mapStateToProps({authedUser,users}){
     debugger;
  return {
      user:authedUser===null?null:users[authedUser]
  }
 }
+
 export default connect(mapStateToProps)(Nav)

@@ -10,32 +10,31 @@ const ANSWERED_QUESTION='answered_question'
 
 class QuestionPage extends React.Component{
     render(){
-        debugger;
         const{question}=this.props
         if( question===null)
           return <Redirect to='/notfound'/>
-       else
-       {
+        else
+        {
             const {
                     name,avatar,optionOneVotesCount,optionTwoVotesCount,
-                  } = question
-            const questionType=optionOneVotesCount===0 && optionTwoVotesCount===0
+                } = question
+            const questionType=optionOneVotesCount===0 && optionTwoVotesCount===0//get the question type
                     ?
                     UNANSWERED_QUESTION
                     :
                     ANSWERED_QUESTION
 
             return (
-
                 <div className='details-question-container'>
                     <div className='question-header'>{name}</div>
                     <div className='quetion'>   
-                   
-                        <div >
+                
+                        <div>
                             <img src={avatar}
                             alt={`Avatar of ${name}`}
                             className='question-avatar'/>
                         </div>
+
                         <div className='separator'>
                             {
                                 questionType === UNANSWERED_QUESTION
@@ -44,27 +43,23 @@ class QuestionPage extends React.Component{
                                 :
                                 <QuestionAnswered question={question}/>
                             }
-                         </div>
+                        </div>
 
 
                     </div>
 
                 </div>
-            
-
             )
-      }
-      
+        }
     }
 }
 
 function mapStateToProps({authedUser,questions,users},props){
-    debugger;
     const {id}=props.match.params
     const question=questions[id]
-  return {
-      question: question?formatQuestion(question,users[question.author],users[authedUser]):null
-     
-  } 
+    return {
+        question: question?formatQuestion(question,users[question.author],users[authedUser]):null   
+    } 
 }
+
 export default connect(mapStateToProps)(QuestionPage)

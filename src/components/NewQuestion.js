@@ -41,43 +41,42 @@ class NewQuestion extends React.Component{
         }
         return (
             <div>
-                 <div className='details-question-container'>
+                    <div className='details-question-container'>
                     <div className='question-header'>Create New Question</div>
                     <form className='new-question' onSubmit={this.handelSubmit}>
-                       <div className='new-dimed'>Complete the quesion</div>
-                       <div className='new-bold'>Would you rather...</div>
-                       <input 
-                       type='text'
-                       className='new-option'
-                       value={this.state.optionOneText} 
-                       placeholder='Enter option one text here'
-                       onChange={this.handelOptionOneChange}></input>
+                        <div className='new-dimed'>Complete the quesion</div>
+                        <div className='new-bold'>Would you rather...</div>
 
-                       <div className='new-or'>Or</div>
+                        <input 
+                        type='text'
+                        className='new-option'
+                        value={this.state.optionOneText} 
+                        placeholder='Enter option one text here'
+                        onChange={this.handelOptionOneChange}/>
 
-                       <input type='text'
-                       className='new-option'
-                       value={this.state.optionTwoText}
-                       placeholder='Enter option Two text here'
-                       onChange={this.handelOptionTwoChange}></input>
-                        <button
-                        className='btn'
-                        type='submit'
-                        >
-                            Submit
+                        <div className='new-or'>Or</div>
+
+                        <input type='text'
+                        className='new-option'
+                        value={this.state.optionTwoText}
+                        placeholder='Enter option Two text here'
+                        onChange={this.handelOptionTwoChange}/>
+
+                        <button className='btn'type='submit'>
+                           Submit
                         </button>
                     </form>
-
                 </div>
-                
             </div>
         )
     }
 }
+
 function mapStateToProps({authedUser}){
   return {
     authedUser
      
   } 
 }
+
 export default connect(mapStateToProps)(NewQuestion)

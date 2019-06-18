@@ -3,7 +3,6 @@ import {connect} from 'react-redux'
 import logo from '../images/logo.svg';
 import {signIn} from '../actions/authedUser'
 
-
 class SignInPage extends React.Component{
     state={
         userId:''
@@ -21,15 +20,9 @@ class SignInPage extends React.Component{
         const {userId}=this.state
         const {dispatch}=this.props
         dispatch(signIn(userId))
-        // this.setState(()=>({
-        //     text:'',
-        //     toHome:id?false:true
-        // }))
     }
-   
     render()
     {
-       // debugger;
         const {users}=this.props
         return (
             <div className='signIn-container'>
@@ -40,29 +33,29 @@ class SignInPage extends React.Component{
                   </div>
              
               </div>
+
               <img src={logo} className="App-logo" alt="logo" />
+
               <span className='center signIn-label'>Sign in</span>
+
               <form onSubmit={this.handelSubmit} className='column-center'>
                 <select defaultValue='0'  onChange={this.handelChange} className='signIn-select'>
-                <option disabled  value='0' > -- select User -- </option>
+                <option disabled  value='0' > -- select User -- </option> {/*default disabled option*/}
                     {
-                    users.map((user)=>(<option key={user.id} value={user.id}>{user.name}</option>))
+                     users.map((user)=>(<option key={user.id} value={user.id}>{user.name}</option>))
                     }
                 </select>
-
                 <button className='btn' type='submit' >Sign In</button>
               </form>
-              
-              
             </div>
         )
     }
 }
 
 function mapStateToProps({users}){
-   // debugger;
   return {
       users:Object.values(users)
   }
 }
+
 export default connect(mapStateToProps)(SignInPage)
