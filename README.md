@@ -1,11 +1,60 @@
 # Would You Rather Project
 
-This is the starter code for the final assessment project for Udacity's React & Redux course.
+To get started right away:
 
-The `_DATA.js` file represents a fake database and methods that let you access the data. The only thing you need to edit in the ` _DATA.js` file is the value of `avatarURL`. Each user should have an avatar, so you’ll need to add the path to each user’s avatar.
+* install all project dependencies with `npm install`
+* start the development server with `npm start` or `yarn start`
 
-Using the provided starter code, you'll build a React/Redux front end for the application. We recommend using the [Create React App](https://github.com/facebook/create-react-app) to bootstrap the project.
-
+## What You're Getting
+```bash
+├── CONTRIBUTING.md
+├── README.md - This file.
+├── package.json # npm package manager file. It's unlikely that you'll need to modify this.
+├── public
+│   ├── favicon.ico # React Icon, You may change if you wish.
+│   └── index.html # DO NOT MODIFY
+└── src
+    ├── actions
+    │    ├── authedUser.js # authenticated user actions.
+    │    ├── questions.js # questions actions .
+    │    ├── shared.js # shared actions .
+    │    └── users.js # users actions.
+    │    
+    ├── Component
+    │    ├── App.js # This is the root of your app
+    │    ├── Dashboard.js # used to render all answered questions and un answered questions.
+    │    ├── Leader.js # render user score and count of questions and answers
+    │    ├── LeaderBoard.js # render collection of Leader component.
+    │    ├── Nav.js # navigation bar to navigate to any page in the application.
+    │    ├── NewQuestion.js # create new question.
+    │    ├── NotFound.js # 404 page if the requested page doesn't exist
+    |    ├── Option.js # render option info.
+    │    ├── QuestionAnswered.js # UI for the question that answered before.
+    │    ├── QuestionDashboard.js # UI for the dashboard question .
+    │    ├── QuestionPage.js # question page that ender QuestionAnswered UI or QuestionUnAnswered UI
+    |    ├── QuestionUnAnswered.js # UI for the question that still unanswered. 
+    │    └── SignInPage.js # select the user to sign in
+    ├── images # contain Users images
+    |
+    ├── middleware
+    │    ├── index.js # to applay the required middlewares as thunk ,logger
+    │    ├── logger.js # logger middleware
+    |
+    ├── reducers #coatin all info that will saved in ths store
+    │    ├── authedUser.js # authenticated user reducer.
+    │    ├── questions.js # questions reducer .
+    │    ├── index.js # combine all reducers .
+    │    └── users.js # users reducer.
+    |
+    ├── utils 
+    │    ├── _Data.js # act as local database file.
+    │    ├── api.js # act as backend to access the database..
+    │    └── helpers.js # contain helper methods like formateQuestion.
+    |
+    ├── App.test.js # Used for testing. Provided with Create React App. Testing is encouraged, but not required.
+    ├── index.css # Global styles. You probably won't need to change anything here.
+    └── index.js # You should not need to modify this file. It is used for DOM rendering only.
+```
 ## Data
 
 There are two types of objects stored in our database:
