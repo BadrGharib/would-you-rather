@@ -32,11 +32,11 @@ class App extends React.Component{
                         ? <SignInPage/>
                         :<div>
                           <Switch>
-                          <Route path='/' exact component={Dashboard}/>
-                          <Route path='/question/:id' component={QuestionPage}/>
-                          <Route path='/new'  component={NewQuestion}/>
-                          <Route path='/leader'  component={LeaderBoard}/>
-                          <Route path="" component={NotFound}/>
+                            <Route path='/' exact component={Dashboard}/>
+                            <Route path='/questions/:id' component={QuestionPage}/>
+                            <Route path='/add'  component={NewQuestion}/>
+                            <Route path='/leaderboard'  component={LeaderBoard}/>
+                            <Route path="" component={NotFound}/>
                           </Switch>
                         </div>
                       } 

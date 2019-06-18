@@ -15,7 +15,7 @@ class QuestionDashboard extends React.Component{
             name,id,avatar,optionSelected,optionOneText,optionTwoText
         } = question
         return (
-                <Link to={`/question/${id}`} style={{'textDecoration':'none'}}>
+                <Link to={`/questions/${id}`} style={{'textDecoration':'none'}}>
                     <div className='question-container'>
                         <div className='question-header'>{name}</div>
                         <div className='quetion'>   
